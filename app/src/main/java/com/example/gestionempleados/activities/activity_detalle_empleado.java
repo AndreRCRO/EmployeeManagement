@@ -33,64 +33,54 @@ public class activity_detalle_empleado extends AppCompatActivity {
         tvTituloDetalle = findViewById(R.id.tvTituloDetalle);
         tableLayoutDetalles = findViewById(R.id.tableLayoutDetalles);
 
+        // Obtener datos del Intent
         int empleadoId = getIntent().getIntExtra("EMPLEADO_ID", -1);
+        String nombre = getIntent().getStringExtra("NOMBRE");
+        String apellido = getIntent().getStringExtra("APELLIDO");
+        double salarioBase = getIntent().getDoubleExtra("SALARIO_BASE", 0);
+        String fechaContratacion = getIntent().getStringExtra("FECHA_CONTRATACION");
+        String tipo = getIntent().getStringExtra("TIPO");
 
-        if (empleadoId != -1) {
-            Empleado empleadoEncontrado = null;
-            for (Empleado emp : DatosEmpleados.listaEmpleados) {
-                if (emp.id == empleadoId) {
-                    empleadoEncontrado = emp;
-                    break;
-                }
-            }
+        if (empleadoId != -1 && nombre != null) {
+            // Mostrar los datos del empleado
+            agregarCampo("ID", String.valueOf(empleadoId));
+            agregarCampo("Nombre", nombre);
+            agregarCampo("Apellido", apellido);
+            agregarCampo("Salario Base", "$" + salarioBase);
+            agregarCampo("Fecha Contratación", fechaContratacion);
 
-            if (empleadoEncontrado != null) {
-                mostrarDetallesEmpleado(empleadoEncontrado);
-            } else {
-                mostrarError();
+            // Mostrar campos específicos según el tipo de empleado
+            if ("Gerente".equals(tipo)) {
+                String departamento = getIntent().getStringExtra("DEPARTAMENTO");
+                double bonoAnual = getIntent().getDoubleExtra("BONO_ANUAL", 0);
+                int cantidadSubordinados = getIntent().getIntExtra("CANTIDAD_SUBORDINADOS", 0);
+
+                agregarCampo("Departamento", departamento);
+                agregarCampo("Bono Anual", "$" + bonoAnual);
+                agregarCampo("Cantidad Subordinados", String.valueOf(cantidadSubordinados));
+            } else if ("TecnicoSenior".equals(tipo)) {
+                String especialidad = getIntent().getStringExtra("ESPECIALIDAD");
+                String nivelCertificacion = getIntent().getStringExtra("NIVEL_CERTIFICACION");
+                int horasExtra = getIntent().getIntExtra("HORAS_EXTRA", 0);
+                int proyectosCompletados = getIntent().getIntExtra("PROYECTOS_COMPLETADOS", 0);
+                int clientesAtendidos = getIntent().getIntExtra("CLIENTES_ATENDIDOS", 0);
+
+                agregarCampo("Especialidad", especialidad);
+                agregarCampo("Nivel Certificación", nivelCertificacion);
+                agregarCampo("Horas Extra", String.valueOf(horasExtra));
+                agregarCampo("Proyectos Completados", String.valueOf(proyectosCompletados));
+                agregarCampo("Clientes Atendidos", String.valueOf(clientesAtendidos));
+            } else if ("Tecnico".equals(tipo)) {
+                String especialidad = getIntent().getStringExtra("ESPECIALIDAD");
+                String nivelCertificacion = getIntent().getStringExtra("NIVEL_CERTIFICACION");
+                int horasExtra = getIntent().getIntExtra("HORAS_EXTRA", 0);
+
+                agregarCampo("Especialidad", especialidad);
+                agregarCampo("Nivel Certificación", nivelCertificacion);
+                agregarCampo("Horas Extra", String.valueOf(horasExtra));
             }
         } else {
             mostrarError();
-        }
-    }
-
-    private void mostrarDetallesEmpleado(Empleado empleado) {
-        // Configurar el título según el tipo de empleado
-        if (empleado instanceof Gerente) {
-            tvTituloDetalle.setText("Detalles del Gerente");
-        } else if (empleado instanceof TecnicoSenior) {
-            tvTituloDetalle.setText("Detalles del Técnico Senior");
-        } else if (empleado instanceof Tecnico) {
-            tvTituloDetalle.setText("Detalles del Técnico");
-        } else {
-            tvTituloDetalle.setText("Detalles del Empleado");
-        }
-
-        // Añadir los campos comunes
-        agregarCampo("ID", String.valueOf(empleado.id));
-        agregarCampo("Nombre", empleado.nombre);
-        agregarCampo("Apellido", empleado.apellido);
-        agregarCampo("Salario Base", "$" + empleado.salarioBase);
-        agregarCampo("Fecha Contratación", empleado.fechaContratacion);
-
-        // Añadir campos específicos
-        if (empleado instanceof Gerente) {
-            Gerente gerente = (Gerente) empleado;
-            agregarCampo("Departamento", gerente.departamento);
-            agregarCampo("Bono Anual", "$" + gerente.bonoAnual);
-            agregarCampo("Cantidad Subordinados", String.valueOf(gerente.cantidadSubordinados));
-        } else if (empleado instanceof TecnicoSenior) {
-            TecnicoSenior tecnicoSenior = (TecnicoSenior) empleado;
-            agregarCampo("Especialidad", tecnicoSenior.especialidad);
-            agregarCampo("Nivel Certificación", tecnicoSenior.nivelCertificacion);
-            agregarCampo("Horas Extra", String.valueOf(tecnicoSenior.horasExtra));
-            agregarCampo("Proyectos Completados", String.valueOf(tecnicoSenior.proyectosCompletados));
-            agregarCampo("Clientes Atendidos", String.valueOf(tecnicoSenior.clientesAtendidos));
-        } else if (empleado instanceof Tecnico) {
-            Tecnico tecnico = (Tecnico) empleado;
-            agregarCampo("Especialidad", tecnico.especialidad);
-            agregarCampo("Nivel Certificación", tecnico.nivelCertificacion);
-            agregarCampo("Horas Extra", String.valueOf(tecnico.horasExtra));
         }
     }
 

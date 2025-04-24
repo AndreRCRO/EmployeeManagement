@@ -61,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       /* cardEmpleadosApi.setOnClickListener(new View.OnClickListener() {
+       cardEmpleadosApi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, activity_empleados_api.class);
+                Intent intent = new Intent(MainActivity.this, activity_lista_empleado_api.class);
                 startActivity(intent);
             }
         });
-        */
+
 
     }
 }

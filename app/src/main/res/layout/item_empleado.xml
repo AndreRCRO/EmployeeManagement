@@ -49,5 +49,6 @@
                 android:textSize="12sp"
                 android:text="Fecha de contratación" />
         </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
