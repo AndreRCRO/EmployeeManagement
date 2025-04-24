@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Nuevo Empleado"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <Spinner
+            android:id="@+id/spinnerTipoEmpleado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campos comunes para todos los empleados -->
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Apellido"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etSalarioBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Salario Base"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etFechaContratacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fecha Contratación (DD/MM/AAAA)"
+            android:inputType="date"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Layout para campos específicos de Gerente -->
+        <LinearLayout
+            android:id="@+id/layoutCamposGerente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etDepartamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Departamento"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etBonoAnual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bono Anual"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etCantidadSubordinados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cantidad de Subordinados"
+                android:inputType="number"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
+
+        <!-- Layout para campos específicos de Técnico -->
+        <LinearLayout
+            android:id="@+id/layoutCamposTecnico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etEspecialidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Especialidad"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etNivelCertificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nivel de Certificación"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etHorasExtra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Horas Extra"
+                android:inputType="number"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
+
+        <!-- Layout para campos específicos de Técnico Senior -->
+        <LinearLayout
+            android:id="@+id/layoutCamposTecnicoSenior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etProyectosCompletados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Proyectos Completados"
+                android:inputType="number"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/etClientesAtendidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Clientes Atendidos"
+                android:inputType="number"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>
