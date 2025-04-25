@@ -35,7 +35,7 @@ public class activity_lista_empleado_api extends AppCompatActivity {
     private ProgressBar progressBar;
     private EmpleadoApiAdapter adapter;
     private List<Empleado> empleados = new ArrayList<>();
-    private final String baseUrl = "https://d6ab734e-086e-4513-9276-d6af8d21a59c.mock.pstmn.io/";
+    private final String baseUrl = "https://raw.githubusercontent.com/adancondori/TareaAPI/refs/heads/main/api/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
